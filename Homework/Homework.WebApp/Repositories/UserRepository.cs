@@ -25,7 +25,7 @@ namespace Homework.WebApp.Repositories
             return await _context.Set<User>().FindAsync(id);
         }
 
-        public async Task AddItemAsync(User user)
+        public async Task AddUserAsync(User user)
         {
             _context.Set<User>().Add(user);
             await _context.SaveChangesAsync();
