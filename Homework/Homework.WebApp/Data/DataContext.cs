@@ -5,7 +5,6 @@ namespace Homework.WebApp.Data
 {
     public class DataContext : DbContext
     {
-        public DbSet<Bank> Banks { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<User> Users { get; set; }
         
