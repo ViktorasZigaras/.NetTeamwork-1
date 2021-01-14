@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Homework.WebApp.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Homework.WebApp
 {
@@ -23,6 +25,11 @@ namespace Homework.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+            services.AddDbContext<DataContext>(optionsAction => optionsAction.UseSqlServer(connectionString));
+            services.AddScoped(typeof(DbContext), typeof(DataContext));
+            
             services.AddControllersWithViews();
         }
 
