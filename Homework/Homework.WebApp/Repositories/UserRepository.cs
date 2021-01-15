@@ -31,7 +31,7 @@ namespace Homework.WebApp.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task EditUserAsync(int id, User user)
+        public async Task EditUserAsync(User user)
         {
             _context.Update(user);
             await _context.SaveChangesAsync();

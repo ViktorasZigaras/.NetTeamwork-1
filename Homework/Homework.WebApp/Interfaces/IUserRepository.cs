@@ -12,7 +12,7 @@ namespace Homework.WebApp.Interfaces
 
         Task AddUserAsync(User user);
 
-        Task EditUserAsync(int id, User user);
+        Task EditUserAsync(User user);
         
         Task DeleteUserAsync(int id);
     }
