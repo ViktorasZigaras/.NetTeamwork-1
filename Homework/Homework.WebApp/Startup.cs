@@ -12,6 +12,7 @@ using Homework.WebApp.Data;
 using Homework.WebApp.Interfaces;
 using Homework.WebApp.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Homework.WebApp.Services;
 
 namespace Homework.WebApp
 {
@@ -32,7 +33,8 @@ namespace Homework.WebApp
             services.AddDbContext<DataContext>(optionsAction => optionsAction.UseSqlServer(connectionString));
             services.AddScoped(typeof(DbContext), typeof(DataContext));
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
-            
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddTransient<AccountService>();
             services.AddControllersWithViews();
         }
 
