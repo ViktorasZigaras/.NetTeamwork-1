@@ -1,0 +1,18 @@
+@model User
+
+@if (Model?.Name != null)
+{
+    <h1>Registered as @Model.Name</h1>
+}
+else
+{
+    <h2>Registration</h2>
+    <form asp-action="Add">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" placeholder="Enter your name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success form-control">Register</button>
+    </form>
+}

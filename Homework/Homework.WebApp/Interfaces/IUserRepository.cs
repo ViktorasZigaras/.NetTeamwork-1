@@ -10,9 +10,9 @@ namespace Homework.WebApp.Interfaces
         
         Task<User> GetUserAsync(int id);
 
-        Task AddItemAsync(User user);
+        Task AddUserAsync(User user);
 
-        Task EditUserAsync(int id, User user);
+        Task EditUserAsync(User user);
         
         Task DeleteUserAsync(int id);
     }

@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Homework.WebApp.Data;
+using Homework.WebApp.Interfaces;
+using Homework.WebApp.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Homework.WebApp
@@ -29,6 +31,7 @@ namespace Homework.WebApp
 
             services.AddDbContext<DataContext>(optionsAction => optionsAction.UseSqlServer(connectionString));
             services.AddScoped(typeof(DbContext), typeof(DataContext));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
             
             services.AddControllersWithViews();
         }

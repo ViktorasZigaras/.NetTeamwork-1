@@ -1,0 +1,15 @@
+@model User
+
+@{
+    Layout = "_Layout";
+}
+
+<h3>Hello, @Model.Name</h3>
+
+<div>
+    <a href="/User/Update/@Model.Id">Update user info</a>
+</div>
+
+<div>
+    <a href="/User/Delete/@Model.Id">Delete user</a>
+</div>
