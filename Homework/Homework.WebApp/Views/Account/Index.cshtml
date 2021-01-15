@@ -1,0 +1,46 @@
+﻿@model List<Account>
+@{
+    ViewData["Title"] = "Accounts";
+    var message = TempData["MsgChangeStatus"] ?? string.Empty;
+}
+<div class="text-center">
+    <h1 class="display-4">Accounts</h1>
+</div>
+@if ((string)message != "")
+{
+    <div class="alert alert-danger">
+        @message
+    </div>
+}
+@foreach (var account in Model)
+{
+    <div class="text-left border-bottom pb-2">
+        <p>Name: @account.UserName</p>
+        <p>Last Name: @account.UserLastName</p>
+        <p>Person ID: @account.PersonalId</p>
+        <p>Account: @account.AccountNumber</p>
+        <p>Balance: @account.Balance Eur</p>
+        <div class="row">
+            <div class="col-6">
+                <form action="/" method="post">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-10">
+                                <input class="form-control" name="topup" placeholder="Enter money" />
+                            </div>
+                            <div class="col-2">
+                                <button type="submit" name="Id" value="@account.Id" class="btn btn-success" asp-controller="Account" asp-action="Add">Topup</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <form action="/" method="post">
+                    <button type="submit" name="Id" value="@account.Id" class="btn btn-danger" asp-controller="Account" asp-action="Delete">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+}
