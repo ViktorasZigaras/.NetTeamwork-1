@@ -14,13 +14,14 @@ namespace Homework.WebApp.Controllers
             _accountRepository = accountRepository;
             _accountService = accountService;
         }
-        public async Task<IActionResult> Index()
+        public ViewResult Index()
         {
-            var accounts = await _accountRepository.GetAll();
-            return View(accounts);
+            var accounts = _accountRepository.GetAll();
+            // return View(accounts);
+            return View("Index", accounts);
         }
         [HttpPost]
-        public async Task<IActionResult> Topup(int id, string topup)
+        public ViewResult Topup(int id, string topup)
         {
             var input = _accountService.ReplaceDot(topup);
             bool parse = _accountService.TryParseTopupInputValue(input);
@@ -33,19 +34,20 @@ namespace Homework.WebApp.Controllers
                     TempData["MsgChangeStatus"] = "Data type can't be negative";
                 } else
                 {
-                    await _accountRepository.Topup(id, top);
+                    _accountRepository.Topup(id, top);
                 }
             } else
             {
                 TempData["MsgChangeStatus"] = "Data type is invalid";
             }
-            return RedirectToAction("Index");
+
+            return Index();
         }
         [HttpPost]
-        public async Task<IActionResult> Delete(int id)
+        public ViewResult Delete(int id)
         {
-            await _accountRepository.Delete(id);
-            return RedirectToAction("Index");
+            _accountRepository.Delete(id);
+            return Index();
         }
     }
 }
