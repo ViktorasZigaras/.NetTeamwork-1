@@ -42,13 +42,13 @@ namespace Homework.WebApp.Services
         public Account GenerateNewAccount(User user)
         {
             var newAccount = new Account();
-            newAccount.UserName = user.Name;
+            // newAccount.UserName = user.Name;
             //Tomai atkomentuok sias eilutes kai savo User modeli turesi prop LastName ir PersonalId
             //newAccount.UserLastName = user.LastName;
             //newAccount.PersonalId = user.PersonalId;
             newAccount.AccountNumber = GenerateAccountNumber();
             newAccount.Balance = 0;
-            newAccount.User_id = user.Id;
+            // newAccount.User_id = user.Id;
             return newAccount;
         }
         public string GenerateAccountNumber()
