@@ -29,6 +29,12 @@ namespace Homework.WebApp.Repositories
             }
             _context.SaveChanges();
         }
+        public void AddAccount(Account account)
+        {
+            _context.Accounts.Add(account);
+            _context.SaveChanges();
+        }
+
         public void Delete(int id)
         {
             var account = _context.Accounts.Where(i => i.Id == id).SingleOrDefault();

@@ -25,7 +25,7 @@ namespace Homework.WebApp.Controllers
             return View(accounts);
         }
         [HttpPost]
-        public IActionResult Add(int id, string topup)
+        public IActionResult Topup(int id, string topup)
         {
             var input = _accountService.ReplaceDot(topup);
             bool parse = _accountService.TryParseTopupInputValue(input);
