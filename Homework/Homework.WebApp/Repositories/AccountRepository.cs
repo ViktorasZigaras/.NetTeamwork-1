@@ -1,10 +1,8 @@
 ﻿using Homework.WebApp.Data;
 using Homework.WebApp.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Homework.WebApp.Interfaces;
 
 namespace Homework.WebApp.Repositories
 {
@@ -16,11 +14,11 @@ namespace Homework.WebApp.Repositories
         {
             _context = context;
         }
-        public async Task<List<Account>> GetAll()
+        public List<Account> GetAll()
         {
-            return await _context.Accounts.OrderBy(x => x.Id).ToListAsync();
+            return _context.Accounts.OrderBy(x => x.Id).ToList();
         }
-        public async Task Topup(int id, decimal topup)
+        public void Topup(int id, decimal topup)
         {
             foreach (var value in _context.Accounts)
             {
@@ -29,18 +27,13 @@ namespace Homework.WebApp.Repositories
                     value.Balance += topup;
                 }
             }
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
-        public async Task AddAccount(Account account)
-        {
-            _context.Accounts.Add(account);
-            await _context.SaveChangesAsync();
-        }
-        public async Task Delete(int id)
+        public void Delete(int id)
         {
             var account = _context.Accounts.Where(i => i.Id == id).SingleOrDefault();
             _context.Accounts.Remove(account);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

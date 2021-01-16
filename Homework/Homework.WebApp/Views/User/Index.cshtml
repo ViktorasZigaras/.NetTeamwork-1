@@ -6,13 +6,19 @@
 }
 else
 {
-    <h2>Registration</h2>
+    <h2>Users</h2>
     <form asp-action="Add">
         <div class="form-group">
             <label asp-for="Name"></label>
             <input asp-for="Name" class="form-control" placeholder="Enter your name">
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-success form-control">Register</button>
+        <button type="submit" class="btn btn-outline-success form-control">Register new user</button>
     </form>
+    
+    <div class="mt-2">
+        <form action="/User/ShowAll">
+            <button type="submit" class="btn btn-outline-primary form-control">Show all users list</button>
+        </form>
+    </div>
 }
