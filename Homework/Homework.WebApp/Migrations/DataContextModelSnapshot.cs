@@ -46,6 +46,38 @@ namespace Homework.WebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccountNumber = "LT012345678901234567",
+                            Balance = 0m,
+                            PersonalId = 39112220001L,
+                            UserLastName = "Jonaitis",
+                            UserName = "Jonas",
+                            User_id = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccountNumber = "LT012345678901234568",
+                            Balance = 0m,
+                            PersonalId = 39112220002L,
+                            UserLastName = "Petraitis",
+                            UserName = "Petras",
+                            User_id = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccountNumber = "LT012345678901234569",
+                            Balance = 0m,
+                            PersonalId = 39112220003L,
+                            UserLastName = "Antanaitis",
+                            UserName = "Antanas",
+                            User_id = 3
+                        });
                 });
 
             modelBuilder.Entity("Homework.WebApp.Models.User", b =>
