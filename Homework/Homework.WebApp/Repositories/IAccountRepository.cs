@@ -9,8 +9,8 @@ namespace Homework.WebApp.Repositories
 {
     public interface IAccountRepository
     {
-        List<Account> GetAll();
-        void Topup(int id, decimal topup);
-        void Delete(int id);
+        Task<List<Account>> GetAll();
+        Task Topup(int id, decimal topup);
+        Task Delete(int id);
     }
 }
