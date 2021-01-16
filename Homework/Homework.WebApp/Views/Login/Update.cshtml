@@ -1,0 +1,18 @@
+@model User
+
+@{
+    ViewBag.Title = "Update user details";
+    Layout = "_Layout";
+}
+
+<h2>Update user details</h2>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input hidden asp-for="Id" class="form-control" value="@Model?.Id">
+        <input asp-for="Name" class="form-control" placeholder="Update your name" value="@Model?.Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success form-control">Update</button>
+</form>
