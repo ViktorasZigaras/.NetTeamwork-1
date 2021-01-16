@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Homework.WebApp.Interfaces;
 using Homework.WebApp.Models;
@@ -17,6 +18,12 @@ namespace Homework.WebApp.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        
+        public async Task<ViewResult> ShowAll()
+        {
+            var users = await _userRepository.GetAllIUsersAsync();
+            return View("AllUsers", users);
         }
 
         public async Task<ViewResult> Add(User user)
