@@ -6,16 +6,16 @@ namespace BankAppTest.UnitTests
     {
         // Registration functionality test
 
-        [Fact]
-        public void ValidPassword()
-        {
-            var passwordValidator = new PasswordValidator();
-            const string password = "InsertPassword";
+        //[Fact]
+        //public void ValidPassword()
+        //{
+        //    var passwordValidator = new PasswordValidator();
+        //    const string password = "InsertPassword";
 
-            bool isvalid = passwordValidator.Isvalid(password);
+        //    bool isvalid = passwordValidator.Isvalid(password);
 
-            Assert.True(isvalid, $"The password {password} is not valid");
+        //    Assert.True(isvalid, $"The password {password} is not valid");
 
-        }
+        //}
     }
 }
