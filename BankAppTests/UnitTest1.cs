@@ -1,5 +1,5 @@
 using FluentAssertions;
-using Homework.WebApp.Services;
+using Homework.Domain.Services;
 using Xunit;
 
 namespace BankAppTests

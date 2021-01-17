@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Homework.WebApp.Models
+namespace Homework.Domain.Models
 {
     public class User
     {

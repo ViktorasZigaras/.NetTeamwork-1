@@ -1,6 +1,6 @@
-﻿using Homework.WebApp.Services;
+﻿using Homework.Domain.Interfaces;
+using Homework.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
-using Homework.WebApp.Interfaces;
 
 namespace Homework.WebApp.Controllers
 {
