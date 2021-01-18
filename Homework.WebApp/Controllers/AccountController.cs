@@ -1,4 +1,5 @@
 ﻿using Homework.Domain.Interfaces;
+using Homework.Domain.Models;
 using Homework.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,36 +18,33 @@ namespace Homework.WebApp.Controllers
         public ViewResult Index()
         {
             var accounts = _accountRepository.GetAll();
-            // return View(accounts);
             return View("Index", accounts);
         }
         [HttpPost]
-        public ViewResult Topup(int id, string topup)
+        public ViewResult Topup(int id)
         {
-            var input = _accountService.ReplaceDot(topup);
-            bool parse = _accountService.TryParseTopupInputValue(input);
-            if (parse)
+            var model = new Topup();
+            model.Id = id;
+            return View("TopupForm", model);
+        }
+        public ActionResult TopupForm(Topup model)
+        {
+            if (ModelState.IsValid)
             {
-                var top = _accountService.ParseTopupInputValue(input);
-                bool isNegative = _accountService.IsValueNegative(top);
-                if (isNegative)
-                {
-                    TempData["MsgChangeStatus"] = "Data type can't be negative";
-                } else
-                {
-                    _accountRepository.Topup(id, top);
-                }
-            } else
-            {
-                TempData["MsgChangeStatus"] = "Data type is invalid";
+                _accountRepository.Topup(model);
+                TempData["MsgChangeStatus"] = "You are successfully topup account";
+                return RedirectToAction("Index", "Account");
             }
-
-            return Index();
+            else
+            {
+                return View("TopupForm", model);
+            }
         }
         [HttpPost]
         public ViewResult Delete(int id)
         {
             _accountRepository.Delete(id);
+            TempData["MsgChangeStatus"] = "You are successfully deleted account";
             return Index();
         }
     }

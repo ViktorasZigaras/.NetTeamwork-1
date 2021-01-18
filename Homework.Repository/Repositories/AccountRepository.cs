@@ -18,13 +18,13 @@ namespace Homework.WebApp.Repositories
         {
             return _context.Accounts.OrderBy(x => x.Id).ToList();
         }
-        public void Topup(int id, decimal topup)
+        public void Topup(Topup model)
         {
             foreach (var value in _context.Accounts)
             {
-                if (value.Id == id)
+                if (value.Id == model.Id)
                 {
-                    value.Balance += topup;
+                    value.Balance += model.Balance;
                 }
             }
             _context.SaveChanges();

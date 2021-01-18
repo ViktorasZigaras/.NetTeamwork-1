@@ -1,0 +1,30 @@
+﻿@model Homework.Domain.Models.Topup
+@{
+    ViewData["Title"] = "TopupAccount";
+}
+<div class="text-center">
+    <h1 class="display-4">Topup Account</h1>
+</div>
+
+<div class="text-left border-bottom pb-2">
+    <div class="row">
+        <div class="col-6">
+            <form action="/" method="post">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-8">
+                            <input asp-for="@Model.Balance" class="form-control" placeholder="Enter money" />
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" name="Id" value="@Model.Id" class="btn btn-success form-control" asp-controller="Account" asp-action="TopupForm">Topup</button>
+                        </div>
+                        <div class="col-12 text-left m-2">
+                            <span asp-validation-for="@Model.Balance" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
