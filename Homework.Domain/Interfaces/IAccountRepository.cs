@@ -6,7 +6,7 @@ namespace Homework.Domain.Interfaces
     public interface IAccountRepository
     {
         List<Account> GetAll();
-        void Topup(int id, decimal topup);
+        void Topup(Topup model);
         void Delete(int id);
     }
 }
