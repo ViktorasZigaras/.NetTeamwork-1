@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAppTests", "BankAppTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework.Domain", "Homework.Domain\Homework.Domain.csproj", "{70500D90-608A-423D-96CD-5F7DC3F67D02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework.Repository", "Homework.Repository\Homework.Repository.csproj", "{88E8AD3C-F310-4EF1-B2A8-A939D2C4BAD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{70500D90-608A-423D-96CD-5F7DC3F67D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70500D90-608A-423D-96CD-5F7DC3F67D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70500D90-608A-423D-96CD-5F7DC3F67D02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88E8AD3C-F310-4EF1-B2A8-A939D2C4BAD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88E8AD3C-F310-4EF1-B2A8-A939D2C4BAD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88E8AD3C-F310-4EF1-B2A8-A939D2C4BAD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88E8AD3C-F310-4EF1-B2A8-A939D2C4BAD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
