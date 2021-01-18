@@ -1,6 +1,5 @@
-using Homework.WebApp.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using Homework.Domain.Models;
 
 namespace Homework.WebApp.Data
 {

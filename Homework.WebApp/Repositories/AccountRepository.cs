@@ -1,8 +1,8 @@
 ﻿using Homework.WebApp.Data;
-using Homework.WebApp.Models;
 using System.Collections.Generic;
 using System.Linq;
-using Homework.WebApp.Interfaces;
+using Homework.Domain.Interfaces;
+using Homework.Domain.Models;
 
 namespace Homework.WebApp.Repositories
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Homework.WebApp.Models;
+using Homework.Domain.Models;
 
-namespace Homework.WebApp.Interfaces
+namespace Homework.Domain.Interfaces
 {
     public interface IAccountRepository
     {

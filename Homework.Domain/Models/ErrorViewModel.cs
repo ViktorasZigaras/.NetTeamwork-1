@@ -1,6 +1,4 @@
-using System;
-
-namespace Homework.WebApp.Models
+namespace Homework.Domain.Models
 {
     public class ErrorViewModel
     {

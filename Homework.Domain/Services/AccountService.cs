@@ -1,11 +1,7 @@
-﻿using Homework.WebApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Homework.Domain.Models;
 
-namespace Homework.WebApp.Services
+namespace Homework.Domain.Services
 {
     public class AccountService
     {

@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Homework.WebApp.Interfaces;
-using Homework.WebApp.Models;
+using Homework.Domain.Interfaces;
+using Homework.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Homework.WebApp.Controllers
