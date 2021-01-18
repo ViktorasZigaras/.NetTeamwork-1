@@ -1,17 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Homework.Application\Homework.Application.csproj" />
     <ProjectReference Include="..\Homework.Domain\Homework.Domain.csproj" />
     <ProjectReference Include="..\Homework.Repository\Homework.Repository.csproj" />
   </ItemGroup>
