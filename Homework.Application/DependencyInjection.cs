@@ -16,7 +16,7 @@ namespace Homework.Application
             const string connectionString = "Server=localhost;Database=TeamWorkDB;Trusted_Connection=true;";
 
             services.AddDbContext<DataContext>(optionsAction => optionsAction.UseSqlServer(connectionString));
-            services.AddScoped(typeof(DbContext), typeof(DataContext));
+            services.AddTransient<DbContext, DataContext>();
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddTransient<AccountService>();
