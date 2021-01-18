@@ -9,10 +9,10 @@ namespace Homework.Application
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection  ConfigureServices()
+        public static IServiceCollection ConfigureServices()
         {
             IServiceCollection services = new ServiceCollection();
-            
+
             const string connectionString = "Server=localhost;Database=TeamWorkDB;Trusted_Connection=true;";
 
             services.AddDbContext<DataContext>(optionsAction => optionsAction.UseSqlServer(connectionString));
