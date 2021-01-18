@@ -33,18 +33,18 @@ namespace BankAppTests
         {
             //Arange
             var accountService = new AccountService();
-            string input = "4,50";
+            string input = "4";
             //Act
             decimal output = accountService.ParseTopupInputValue(input);
             //Assert
-            output.Should().Be(4.50M);
+            output.Should().Be(4);
         }
         [Fact]
         public void TestTryParseTopupInputValue()
         {
             //Arange
             var accountService = new AccountService();
-            string input = "8,50";
+            string input = "8";
             //Act
             bool result = accountService.TryParseTopupInputValue(input);
             //Assert
