@@ -1,3 +1,4 @@
+using Homework.Application;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,13 +24,12 @@ namespace Homework.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            var serviceCollection = DependencyInjection.ConfigureServices();
+            foreach (var service in serviceCollection)
+            {
+                services.Add(service);
+            }
 
-            services.AddDbContext<DataContext>(optionsAction => optionsAction.UseSqlServer(connectionString));
-            services.AddScoped(typeof(DbContext), typeof(DataContext));
-            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
-            services.AddScoped<IAccountRepository, AccountRepository>();
-            services.AddTransient<AccountService>();
             services.AddControllersWithViews();
         }
 
