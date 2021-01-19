@@ -8,13 +8,9 @@ namespace Homework.Domain.Models
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        
         public string Name { get; set; }
-        
         public string LastName { get; set; }
-        
         public long PersonalId { get; set; }
-
-        public ICollection<Account> Accounts { get; set; } = new List<Account>();
+        public List<Account> Accounts { get; set; } = new List<Account>();
     }
 }

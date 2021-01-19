@@ -65,9 +65,11 @@ namespace Homework.Repository.Migrations
 
             modelBuilder.Entity("Homework.Domain.Models.Account", b =>
                 {
-                    b.HasOne("Homework.Domain.Models.User", null)
+                    b.HasOne("Homework.Domain.Models.User", "User")
                         .WithMany("Accounts")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Homework.Domain.Models.User", b =>

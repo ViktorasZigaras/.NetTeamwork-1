@@ -9,5 +9,7 @@ namespace Homework.Domain.Models
         public int Id { get; set; }
         public string AccountNumber { get; set; }
         public decimal Balance { get; set; } = 0;
+        public int? UserId { get; set; }
+        public User User { get; set; }
     }
 }
