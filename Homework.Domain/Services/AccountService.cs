@@ -1,9 +1,10 @@
 ﻿using System;
+using Homework.Domain.Interfaces;
 using Homework.Domain.Models;
 
 namespace Homework.Domain.Services
 {
-    public class AccountService
+    public class AccountService : IAccountService
     {
         public bool TryParseTopupInputValue(string input)
         {
