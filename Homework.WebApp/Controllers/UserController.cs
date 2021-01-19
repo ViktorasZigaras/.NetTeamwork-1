@@ -14,6 +14,10 @@ namespace Homework.WebApp.Controllers
             _userRepository = userRepository;
         }
 
+        public UserController()
+        {
+        }
+
         public IActionResult Index()
         {
             return View();

@@ -14,6 +14,10 @@ namespace Homework.WebApp.Controllers
             _logger = logger;
         }
 
+        public HomeController()
+        {
+        }
+
         public IActionResult Index()
         {
             return View();
