@@ -4,12 +4,12 @@ using Xunit;
 
 namespace BankAppTests
 {
-    public class UnitTest1
+    public class AccountServiceTests
     {
         [Fact]
         public void TestIsValueNegative()
         {
-            //Arange
+            //Arrange
             var accountService = new AccountService();
             decimal value = 2.50M;
             //Act
@@ -17,10 +17,11 @@ namespace BankAppTests
             //Assert
             result.Should().BeFalse();
         }
+
         [Fact]
         public void TestReplaceDot()
         {
-            //Arange
+            //Arrange
             var accountService = new AccountService();
             string input = "2.50";
             //Act
@@ -28,10 +29,11 @@ namespace BankAppTests
             //Assert
             output.Should().Be("2,50");
         }
+
         [Fact]
         public void TestParseTopupInputValue()
         {
-            //Arange
+            //Arrange
             var accountService = new AccountService();
             string input = "4";
             //Act
@@ -39,10 +41,11 @@ namespace BankAppTests
             //Assert
             output.Should().Be(4);
         }
+
         [Fact]
         public void TestTryParseTopupInputValue()
         {
-            //Arange
+            //Arrange
             var accountService = new AccountService();
             string input = "8";
             //Act
