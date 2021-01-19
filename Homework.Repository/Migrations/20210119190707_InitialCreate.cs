@@ -42,6 +42,33 @@ namespace Homework.Repository.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "LastName", "Name", "PersonalId" },
+                values: new object[] { 1, "Crouch", "Dominick", 10512158741L });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "LastName", "Name", "PersonalId" },
+                values: new object[] { 2, "Griffith", "Maegan", 2022081770L });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "LastName", "Name", "PersonalId" },
+                values: new object[] { 3, "Smith", "Ryan", 10710237512L });
+
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "Id", "AccountNumber", "Balance", "UserId" },
+                values: new object[,]
+                {
+                    { 1, "LT981088349522671550", 100m, 1 },
+                    { 2, "LT981088349522671551", 80m, 1 },
+                    { 3, "LT981088349522671552", 110m, 2 },
+                    { 4, "LT981088349522671553", 10m, 3 },
+                    { 5, "LT981088349522671554", 200m, 3 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_UserId",
                 table: "Accounts",
