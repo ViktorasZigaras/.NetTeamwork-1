@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Homework.Repository.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210119144147_InitialCreate")]
+    [Migration("20210119163856_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,9 +67,11 @@ namespace Homework.Repository.Migrations
 
             modelBuilder.Entity("Homework.Domain.Models.Account", b =>
                 {
-                    b.HasOne("Homework.Domain.Models.User", null)
+                    b.HasOne("Homework.Domain.Models.User", "User")
                         .WithMany("Accounts")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Homework.Domain.Models.User", b =>
