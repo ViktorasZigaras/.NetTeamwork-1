@@ -8,9 +8,9 @@ namespace Homework.WebApp.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountRepository _accountRepository;
-        private readonly AccountService _accountService;
+        private readonly IAccountService _accountService;
 
-        public AccountController(IAccountRepository accountRepository, AccountService accountService)
+        public AccountController(IAccountRepository accountRepository, IAccountService accountService)
         {
             _accountRepository = accountRepository;
             _accountService = accountService;
