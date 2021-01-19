@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Homework.WebApp.Migrations
+namespace Homework.Repository.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -40,26 +40,6 @@ namespace Homework.WebApp.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Accounts",
-                columns: new[] { "Id", "AccountNumber", "Balance", "UserId" },
-                values: new object[,]
-                {
-                    { 1, "LT012345678901234567", 0m, null },
-                    { 2, "LT012345678901234568", 0m, null },
-                    { 3, "LT012345678901234569", 0m, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "LastName", "Name", "PersonalId" },
-                values: new object[,]
-                {
-                    { 1, "Jonaitis", "Jonas", 39112220001L },
-                    { 2, "Petraitis", "Petras", 39112220002L },
-                    { 3, "Antanaitis", "Antanas", 39112220003L }
                 });
 
             migrationBuilder.CreateIndex(
