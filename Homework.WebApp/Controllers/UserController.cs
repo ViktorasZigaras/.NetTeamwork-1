@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Homework.Domain.Interfaces;
 using Homework.Domain.Models;
+using Homework.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Homework.WebApp.Controllers
@@ -8,10 +9,12 @@ namespace Homework.WebApp.Controllers
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
+        private readonly AccountService _accountService;
 
-        public UserController(IUserRepository userRepository)
+        public UserController(IUserRepository userRepository, AccountService accountService)
         {
             _userRepository = userRepository;
+            _accountService = accountService;
         }
 
         public IActionResult Index()
@@ -27,6 +30,7 @@ namespace Homework.WebApp.Controllers
 
         public async Task<ViewResult> Add(User user)
         {
+            user.Accounts.Add(_accountService.GenerateNewAccount());
             await _userRepository.AddUserAsync(user);
             return View("Registered", user);
         }
