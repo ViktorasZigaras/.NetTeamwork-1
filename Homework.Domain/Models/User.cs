@@ -15,6 +15,6 @@ namespace Homework.Domain.Models
         
         public long PersonalId { get; set; }
 
-        public virtual List<Account> Accounts { get; set; } = new List<Account>();
+        public ICollection<Account> Accounts { get; set; } = new List<Account>();
     }
 }

@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Homework.WebApp.Migrations
+namespace Homework.Repository.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210116161747_InitialCreate")]
+    [Migration("20210119144147_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace Homework.WebApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("Homework.WebApp.Models.Account", b =>
+            modelBuilder.Entity("Homework.Domain.Models.Account", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,29 +42,9 @@ namespace Homework.WebApp.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Accounts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AccountNumber = "LT012345678901234567",
-                            Balance = 0m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AccountNumber = "LT012345678901234568",
-                            Balance = 0m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AccountNumber = "LT012345678901234569",
-                            Balance = 0m
-                        });
                 });
 
-            modelBuilder.Entity("Homework.WebApp.Models.User", b =>
+            modelBuilder.Entity("Homework.Domain.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -83,39 +63,16 @@ namespace Homework.WebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            LastName = "Jonaitis",
-                            Name = "Jonas",
-                            PersonalId = 39112220001L
-                        },
-                        new
-                        {
-                            Id = 2,
-                            LastName = "Petraitis",
-                            Name = "Petras",
-                            PersonalId = 39112220002L
-                        },
-                        new
-                        {
-                            Id = 3,
-                            LastName = "Antanaitis",
-                            Name = "Antanas",
-                            PersonalId = 39112220003L
-                        });
                 });
 
-            modelBuilder.Entity("Homework.WebApp.Models.Account", b =>
+            modelBuilder.Entity("Homework.Domain.Models.Account", b =>
                 {
-                    b.HasOne("Homework.WebApp.Models.User", null)
+                    b.HasOne("Homework.Domain.Models.User", null)
                         .WithMany("Accounts")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("Homework.WebApp.Models.User", b =>
+            modelBuilder.Entity("Homework.Domain.Models.User", b =>
                 {
                     b.Navigation("Accounts");
                 });
