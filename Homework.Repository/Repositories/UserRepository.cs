@@ -21,8 +21,8 @@ namespace Homework.WebApp.Repositories
             var users = await _context.Set<User>().ToListAsync();
             foreach (var user in users)
             {
-                var accounts = _context.Set<Account>().Where(u => u.UserId == u.Id).ToList();
-                user.Accounts = accounts;
+                var accounts = _context.Set<Account>().Where(a => a.UserId == user.Id);
+                user.Accounts = accounts.ToList();
             }
             return users;
         }
