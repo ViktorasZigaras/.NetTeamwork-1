@@ -4,7 +4,15 @@
     Layout = "_Layout";
 }
 
-<h3>Hello, @Model.Name</h3>
+<h3>Hello, @Model.Name @Model.LastName</h3>
+
+<div>
+    <p>You have these bank accounts:</p>
+    @foreach (var account in Model.Accounts)
+    {
+        <p>Account: @account.AccountNumber, Balance: @account.Balance Eur</p>
+    }
+</div>
 
 <div>
     <a href="/User/Update/@Model.Id">Update user info</a>
