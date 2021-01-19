@@ -40,6 +40,43 @@ namespace Homework.Repository.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccountNumber = "LT981088349522671550",
+                            Balance = 100m,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccountNumber = "LT981088349522671551",
+                            Balance = 80m,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccountNumber = "LT981088349522671552",
+                            Balance = 110m,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AccountNumber = "LT981088349522671553",
+                            Balance = 10m,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AccountNumber = "LT981088349522671554",
+                            Balance = 200m,
+                            UserId = 3
+                        });
                 });
 
             modelBuilder.Entity("Homework.Domain.Models.User", b =>
@@ -61,6 +98,29 @@ namespace Homework.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LastName = "Crouch",
+                            Name = "Dominick",
+                            PersonalId = 10512158741L
+                        },
+                        new
+                        {
+                            Id = 2,
+                            LastName = "Griffith",
+                            Name = "Maegan",
+                            PersonalId = 2022081770L
+                        },
+                        new
+                        {
+                            Id = 3,
+                            LastName = "Smith",
+                            Name = "Ryan",
+                            PersonalId = 10710237512L
+                        });
                 });
 
             modelBuilder.Entity("Homework.Domain.Models.Account", b =>
