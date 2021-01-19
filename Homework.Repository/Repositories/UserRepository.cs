@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Homework.Domain.Interfaces;
 using Homework.Domain.Models;
@@ -17,7 +18,13 @@ namespace Homework.WebApp.Repositories
         
         public async Task<List<User>> GetAllIUsersAsync()
         {
-            return await _context.Set<User>().ToListAsync();
+            var users = await _context.Set<User>().ToListAsync();
+            foreach (var user in users)
+            {
+                var accounts = _context.Set<Account>().Where(u => u.UserId == u.Id).ToList();
+                user.Accounts = accounts;
+            }
+            return users;
         }
 
         public async Task<User> GetUserAsync(int id)
