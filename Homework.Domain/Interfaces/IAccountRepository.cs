@@ -8,5 +8,7 @@ namespace Homework.Domain.Interfaces
         List<Account> GetAll();
         void Topup(Topup model);
         void Delete(int id);
+        List<User> GetAllUsers();
+        void AddAccount(Account acount);
     }
 }

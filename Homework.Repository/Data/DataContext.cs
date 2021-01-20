@@ -26,6 +26,9 @@ namespace Homework.WebApp.Data
                 new Account {Id = 4, AccountNumber = "LT981088349522671553", Balance = 10, UserId = 3},
                 new Account {Id = 5, AccountNumber = "LT981088349522671554", Balance = 200, UserId = 3}
             );
+            modelBuilder.Entity<Account>()
+            .HasOne(p => p.User)
+            .WithMany(b => b.Accounts);
         }
     }
 }
