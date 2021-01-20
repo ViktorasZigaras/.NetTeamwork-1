@@ -17,10 +17,6 @@ namespace Homework.WebApp.Controllers
             _accountService = accountService;
         }
 
-        public UserController()
-        {
-        }
-
         public IActionResult Index()
         {
             return View();
