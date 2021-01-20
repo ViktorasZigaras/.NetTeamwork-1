@@ -15,7 +15,7 @@ namespace Homework.WebApp.Repositories
         {
             _context = context;
         }
-        
+
         public async Task<List<User>> GetAllUsersAsync()
         {
             var users = await _context.Set<User>().ToListAsync();
@@ -23,7 +23,26 @@ namespace Homework.WebApp.Repositories
             {
                 user.Accounts = await GetUserAccounts(user);
             }
+
             return users;
+        }
+
+        public async Task<List<User>> TransferPaymentAsync(int senderId, string senderAccount, string recipientAccount,
+            decimal amount)
+        {
+            var sender = await _context.Set<User>().FindAsync(senderId);
+            var senderAccounts = await GetUserAccounts(sender);
+            foreach (var sa in senderAccounts.Where(sa => sa.AccountNumber == senderAccount))
+            {
+                sa.Balance -= amount;
+            }
+
+            var recipient = await _context.Set<Account>().FirstAsync(a => a.AccountNumber == recipientAccount);
+            recipient.Balance += amount;
+
+            await _context.SaveChangesAsync();
+
+            return await GetAllUsersAsync();
         }
 
         public async Task<User> GetUserAsync(int id)
@@ -50,7 +69,7 @@ namespace Homework.WebApp.Repositories
             if (userAccounts.Count == 0)
             {
                 _context.Set<User>().Remove(user);
-                await _context.SaveChangesAsync();    
+                await _context.SaveChangesAsync();
             }
         }
 

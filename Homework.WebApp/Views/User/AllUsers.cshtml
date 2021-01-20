@@ -12,6 +12,13 @@
             @foreach (var account in user.Accounts)
             {
                 <p>Bank account <b>@account.AccountNumber</b>, balance <b>@account.Balance</b></p>
+                <form class="mb-4" asp-action="TransferPayment">
+                    <input name="senderId" type="hidden" value="@user.Id">
+                    <input name="senderAccount" type="hidden" value="@account.AccountNumber">
+                    <input name="recipientAccount" type="text" value="" placeholder="Recipient account">
+                    <input name="amount" type="number" value="" placeholder="Money amount">
+                    <button class="btn btn-outline-info" type="submit">Send money</button>
+                </form>                                                                              
             }
             <div>
                 <a class="btn btn-outline-primary" href="/User/Update/@user.Id">Update user info</a>
