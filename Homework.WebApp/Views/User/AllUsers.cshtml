@@ -6,21 +6,16 @@
 
     foreach (var user in Model)
     {
-        <div class="text-left border-bottom pb-2">
-            <p>Name: @user.Name</p>
-            <p>LastName: @user.LastName</p>
+        <div class="mt-4 text-left border-bottom pb-2">
+            <p>User: <b>@user.Name @user.LastName</b></p>
             
             @foreach (var account in user.Accounts)
             {
-                <p>Bank account: @account.AccountNumber</p>
-                <p>Bank balance: @account.Balance</p>
+                <p>Bank account <b>@account.AccountNumber</b>, balance <b>@account.Balance</b></p>
             }
             <div>
-                <a href="/User/Update/@user.Id">Update user info</a>
-            </div>
-            
-            <div>
-                <a href="/User/Delete/@user.Id">Delete user</a>
+                <a class="btn btn-outline-primary" href="/User/Update/@user.Id">Update user info</a>
+                <a class="btn btn-outline-danger" href="/User/Delete/@user.Id">Delete user</a>
             </div>
         </div>
     }

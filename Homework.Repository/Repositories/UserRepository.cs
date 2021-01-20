@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Homework.Domain.Interfaces;
 using Homework.Domain.Models;
@@ -17,7 +18,13 @@ namespace Homework.WebApp.Repositories
         
         public async Task<List<User>> GetAllIUsersAsync()
         {
-            return await _context.Set<User>().ToListAsync();
+            var users = await _context.Set<User>().ToListAsync();
+            foreach (var user in users)
+            {
+                // var accounts = await _context.Set<Account>().Where(a => a.UserId == user.Id).ToListAsync();
+                user.Accounts = await GetUserAccounts(user);
+            }
+            return users;
         }
 
         public async Task<User> GetUserAsync(int id)
@@ -40,8 +47,17 @@ namespace Homework.WebApp.Repositories
         public async Task DeleteUserAsync(int id)
         {
             var user = await GetUserAsync(id);
-            _context.Set<User>().Remove(user);
-            await _context.SaveChangesAsync();
+            var userAccounts = await GetUserAccounts(user);
+            if (userAccounts.Count == 0)
+            {
+                _context.Set<User>().Remove(user);
+                await _context.SaveChangesAsync();    
+            }
+        }
+
+        private async Task<List<Account>> GetUserAccounts(User user)
+        {
+            return await _context.Set<Account>().Where(a => a.UserId == user.Id).ToListAsync();
         }
     }
 }

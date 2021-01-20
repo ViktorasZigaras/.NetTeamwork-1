@@ -17,9 +17,9 @@ namespace Homework.Application
 
             services.AddDbContext<DataContext>(optionsAction => optionsAction.UseSqlServer(connectionString));
             services.AddTransient<DbContext, DataContext>();
-            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAccountRepository, AccountRepository>();
-            services.AddTransient<AccountService>();
+            services.AddScoped<IAccountService, AccountService>();
 
             return services;
         }

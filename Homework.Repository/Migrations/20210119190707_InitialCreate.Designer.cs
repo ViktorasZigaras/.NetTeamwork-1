@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Homework.WebApp.Migrations
+namespace Homework.Repository.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210116161747_InitialCreate")]
+    [Migration("20210119190707_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace Homework.WebApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("Homework.WebApp.Models.Account", b =>
+            modelBuilder.Entity("Homework.Domain.Models.Account", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,24 +47,41 @@ namespace Homework.WebApp.Migrations
                         new
                         {
                             Id = 1,
-                            AccountNumber = "LT012345678901234567",
-                            Balance = 0m
+                            AccountNumber = "LT981088349522671550",
+                            Balance = 100m,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            AccountNumber = "LT012345678901234568",
-                            Balance = 0m
+                            AccountNumber = "LT981088349522671551",
+                            Balance = 80m,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 3,
-                            AccountNumber = "LT012345678901234569",
-                            Balance = 0m
+                            AccountNumber = "LT981088349522671552",
+                            Balance = 110m,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AccountNumber = "LT981088349522671553",
+                            Balance = 10m,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AccountNumber = "LT981088349522671554",
+                            Balance = 200m,
+                            UserId = 3
                         });
                 });
 
-            modelBuilder.Entity("Homework.WebApp.Models.User", b =>
+            modelBuilder.Entity("Homework.Domain.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,34 +105,36 @@ namespace Homework.WebApp.Migrations
                         new
                         {
                             Id = 1,
-                            LastName = "Jonaitis",
-                            Name = "Jonas",
-                            PersonalId = 39112220001L
+                            LastName = "Crouch",
+                            Name = "Dominick",
+                            PersonalId = 10512158741L
                         },
                         new
                         {
                             Id = 2,
-                            LastName = "Petraitis",
-                            Name = "Petras",
-                            PersonalId = 39112220002L
+                            LastName = "Griffith",
+                            Name = "Maegan",
+                            PersonalId = 2022081770L
                         },
                         new
                         {
                             Id = 3,
-                            LastName = "Antanaitis",
-                            Name = "Antanas",
-                            PersonalId = 39112220003L
+                            LastName = "Smith",
+                            Name = "Ryan",
+                            PersonalId = 10710237512L
                         });
                 });
 
-            modelBuilder.Entity("Homework.WebApp.Models.Account", b =>
+            modelBuilder.Entity("Homework.Domain.Models.Account", b =>
                 {
-                    b.HasOne("Homework.WebApp.Models.User", null)
+                    b.HasOne("Homework.Domain.Models.User", "User")
                         .WithMany("Accounts")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Homework.WebApp.Models.User", b =>
+            modelBuilder.Entity("Homework.Domain.Models.User", b =>
                 {
                     b.Navigation("Accounts");
                 });
