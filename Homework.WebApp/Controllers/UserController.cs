@@ -24,7 +24,7 @@ namespace Homework.WebApp.Controllers
         
         public async Task<ViewResult> ShowAll()
         {
-            var users = await _userRepository.GetAllIUsersAsync();
+            var users = await _userRepository.GetAllUsersAsync();
             return View("AllUsers", users);
         }
 
