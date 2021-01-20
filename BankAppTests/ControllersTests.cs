@@ -32,8 +32,10 @@ namespace BankAppTests
                account 
             });
             var accountController = new AccountController(mockAccountRepository.Object, accountService);
+
             //Act
             var result = accountController.Index();
+
             //Assert
             result.Should().BeAssignableTo<ViewResult>();
         }
@@ -48,8 +50,10 @@ namespace BankAppTests
             var mockAccountRepository = new Mock<IAccountRepository>();
             mockAccountRepository.Setup(m => m.Topup(topupModel));
             var accountController = new AccountController(mockAccountRepository.Object, accountService);
+
             //Act
             var result = accountController.Topup(8);
+
             //Assert
             result.Should().BeAssignableTo<ViewResult>();
         }
@@ -72,10 +76,34 @@ namespace BankAppTests
             {
                 TempData = tempData
             };
+
             //Act
             var result = accountController.TopupForm(topupModel);
+
             //Assert
             result.Should().BeAssignableTo<RedirectToActionResult>();
+        }
+
+        [Fact]
+        public void AccountControllerDelete()
+        {
+            //Arrange
+            var accountService = new AccountService();
+            var mockAccountRepository = new Mock<IAccountRepository>();
+            var httpContext = new DefaultHttpContext();
+            var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
+            tempData["MsgChangeStatus"] = "You are successfully deleted account";
+            var accountController = new AccountController(mockAccountRepository.Object, accountService)
+            {
+                TempData = tempData
+            };
+
+            //Act
+            var result = accountController.Index();
+
+            //Assert
+            result.Should().BeAssignableTo<ViewResult>();
+
         }
     }
 }
