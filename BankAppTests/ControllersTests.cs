@@ -15,55 +15,6 @@ namespace BankAppTests
 {
     public class ControllersTests
     {
-
-        [Fact]
-        public void HomeControllerVerifyIndexViewType()
-        {
-            //Arrange
-            var controller = new HomeController();
-
-            //Act
-            var result = controller.Index();
-
-            //Assert
-            Assert.IsType<ViewResult>(result);
-
-        }
-
-        [Fact]
-        public void UserControllerVerifyIndexViewType()
-        {
-            //Arrange
-            var controller = new UserController();
-
-            //Act
-            var result = controller.Index();
-
-            //Assert
-            Assert.IsType<ViewResult>(result);
-        }
-
-        [Fact]
-        public void AccountServiceDelete()
-        {
-            //Arrange
-            var accountService = new AccountService();
-            var mockAccountRepository = new Mock<IAccountRepository>();
-            var httpContext = new DefaultHttpContext();
-            var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
-            tempData["MsgChangeStatus"] = "You are successfully deleted account";
-            var accountController = new AccountController(mockAccountRepository.Object, accountService)
-            {
-                TempData = tempData
-            };
-
-            //Act
-            var result = accountController.Index();
-
-            //Assert
-            result.Should().BeAssignableTo<ViewResult>();
-
-        }
         [Fact]
         public void AccountControllerIndexTest()
         {
@@ -131,6 +82,28 @@ namespace BankAppTests
 
             //Assert
             result.Should().BeAssignableTo<RedirectToActionResult>();
+        }
+
+        [Fact]
+        public void AccountControllerDelete()
+        {
+            //Arrange
+            var accountService = new AccountService();
+            var mockAccountRepository = new Mock<IAccountRepository>();
+            var httpContext = new DefaultHttpContext();
+            var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
+            tempData["MsgChangeStatus"] = "You are successfully deleted account";
+            var accountController = new AccountController(mockAccountRepository.Object, accountService)
+            {
+                TempData = tempData
+            };
+
+            //Act
+            var result = accountController.Index();
+
+            //Assert
+            result.Should().BeAssignableTo<ViewResult>();
+
         }
     }
 }
