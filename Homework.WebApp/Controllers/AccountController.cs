@@ -40,6 +40,28 @@ namespace Homework.WebApp.Controllers
                 return View("TopupForm", model);
             }
         }
+        public ViewResult Create()
+        {
+            var users = _accountRepository.GetAllUsers();
+            return View("Create", users);
+        }
+        [HttpPost]
+        public ActionResult CreateAccount(int id)
+        {
+            if(id != 0)
+            {
+                var newAccount = _accountService.GenerateNewAccount();
+                newAccount.UserId = id;
+                _accountRepository.AddAccount(newAccount);
+                return RedirectToAction("Index", "Account");
+            } else
+            {
+                TempData["MsgChangeStatus"] = "You have to choose user!";
+                var users = _accountRepository.GetAllUsers();
+                return View("Create", users);
+            }
+            
+        }
         [HttpPost]
         public ViewResult Delete(int id)
         {

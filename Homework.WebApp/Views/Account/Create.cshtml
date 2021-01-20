@@ -1,0 +1,29 @@
+﻿@model List<Homework.Domain.Models.User>
+@{
+    ViewData["Title"] = "Create new account";
+    var message = TempData["MsgChangeStatus"] ?? string.Empty;
+}
+<div class="text-center">
+    <h1 class="display-4 p-4">Create New Account</h1>
+</div>
+@if ((string)message != "")
+{
+    <div class="alert alert-danger">
+        @message
+    </div>
+}
+<form action="/" method="post">
+    <div class="input-group">
+        <select name="id" class="custom-select" id="inputGroupSelect04">
+            <option value="0" selected>Choose user...</option>
+            @foreach (var user in Model)
+            {
+                <option value="@user.Id">@user.Name @user.LastName</option>
+            }
+        </select>
+        <div class="input-group-append">
+            <button class="btn btn-outline-success" type="submit" asp-controller="Account" asp-action="CreateAccount">Create</button>
+        </div>
+    </div>
+</form>
+<br />

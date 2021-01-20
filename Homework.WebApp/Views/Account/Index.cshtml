@@ -12,29 +12,41 @@
         @message
     </div>
 }
-@foreach (var account in Model)
+
+<div class="text-center">
+    <form action="/" method="post">
+        <button type="submit" class="btn btn-primary" asp-controller="Account" asp-action="Create">Create New Account</button>
+    </form>
+</div>
+@if (Model?.Count != 0)
 {
-    <div class="text-left border-bottom pb-2">
-        <p>Account: @account.AccountNumber</p>
-        <p>Balance: @account.Balance Eur</p>
-        <div class="row">
-            <div class="col-1">
-                <form action="/" method="post">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-2">
-                                <button type="submit" name="Id" value="@account.Id" class="btn btn-success" asp-controller="Account" asp-action="Topup">Topup</button>
-                            </div>
+    @foreach (var account in Model)
+    {
+<div class="text-left border-bottom pb-2">
+    <p>Name: @account.User.Name</p>
+    <p>Last Name: @account.User.LastName</p>
+    <p>Person ID: @account.User.PersonalId</p>
+    <p>Account: @account.AccountNumber</p>
+    <p>Balance: @account.Balance Eur</p>
+    <div class="row">
+        <div class="col-1">
+            <form action="/" method="post">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <button type="submit" name="Id" value="@account.Id" class="btn btn-success" asp-controller="Account" asp-action="Topup">Topup</button>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="col-1">
-                <form action="/" method="post">
-                    <button type="submit" name="Id" value="@account.Id" class="btn btn-danger" asp-controller="Account" asp-action="Delete">Delete</button>
-                </form>
-            </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-1">
+            <form action="/" method="post">
+                <button type="submit" name="Id" value="@account.Id" class="btn btn-danger" asp-controller="Account" asp-action="Delete">Delete</button>
+            </form>
         </div>
     </div>
-    <br />
+</div>
+        <br />
+    }
 }
