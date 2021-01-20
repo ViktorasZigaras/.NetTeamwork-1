@@ -8,11 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Moq;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace BankAppTests
@@ -25,13 +21,15 @@ namespace BankAppTests
             //Arrange
             var fixture = new Fixture();
             var accountService = new AccountService();
-            var account1 = fixture.Build<Account>().Without(c => c.Id).Create();
-            var account2 = fixture.Build<Account>().Without(c => c.Id).Create();
+            var account = new Account();
+            account.AccountNumber = "LT112222233333333333";
+            account.Balance = 0;
+            account.UserId = 1;
+            account.User = new User();
             var mockAccountRepository = new Mock<IAccountRepository>();
             mockAccountRepository.Setup(m => m.GetAll()).Returns(new List<Account>()
             {
-                account1,
-                account2
+               account 
             });
             var accountController = new AccountController(mockAccountRepository.Object, accountService);
             //Act
