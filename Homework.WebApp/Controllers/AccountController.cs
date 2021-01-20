@@ -53,6 +53,7 @@ namespace Homework.WebApp.Controllers
                 var newAccount = _accountService.GenerateNewAccount();
                 newAccount.UserId = id;
                 _accountRepository.AddAccount(newAccount);
+                TempData["MsgChangeStatus"] = "You are successfully created new account!";
                 return RedirectToAction("Index", "Account");
             } else
             {
