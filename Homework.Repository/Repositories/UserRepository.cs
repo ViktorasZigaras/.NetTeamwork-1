@@ -16,12 +16,11 @@ namespace Homework.WebApp.Repositories
             _context = context;
         }
         
-        public async Task<List<User>> GetAllIUsersAsync()
+        public async Task<List<User>> GetAllUsersAsync()
         {
             var users = await _context.Set<User>().ToListAsync();
             foreach (var user in users)
             {
-                // var accounts = await _context.Set<Account>().Where(a => a.UserId == user.Id).ToListAsync();
                 user.Accounts = await GetUserAccounts(user);
             }
             return users;

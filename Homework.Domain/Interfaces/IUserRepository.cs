@@ -6,7 +6,7 @@ namespace Homework.Domain.Interfaces
 {
     public interface IUserRepository
     {
-        Task<List<User>> GetAllIUsersAsync();
+        Task<List<User>> GetAllUsersAsync();
         
         Task<User> GetUserAsync(int id);
 
