@@ -21,10 +21,17 @@ namespace Homework.WebApp.Controllers
         {
             return View();
         }
-        
+
         public async Task<ViewResult> ShowAll()
         {
             var users = await _userRepository.GetAllUsersAsync();
+            return View("AllUsers", users);
+        }
+
+        public async Task<ViewResult> TransferPayment(int senderId, string senderAccount, string recipientAccount,
+            decimal amount)
+        {
+            var users = await _userRepository.TransferPaymentAsync(senderId, senderAccount, recipientAccount, amount);
             return View("AllUsers", users);
         }
 
@@ -34,19 +41,19 @@ namespace Homework.WebApp.Controllers
             await _userRepository.AddUserAsync(user);
             return View("Registered", user);
         }
-        
+
         public async Task<ViewResult> Update(int id)
         {
             var user = await _userRepository.GetUserAsync(id);
             return View("Update", user);
         }
-        
+
         public async Task<ViewResult> Edit(User user)
         {
             await _userRepository.EditUserAsync(user);
             return View("Registered", user);
         }
-        
+
         public async Task<ViewResult> Delete(int id)
         {
             await _userRepository.DeleteUserAsync(id);
